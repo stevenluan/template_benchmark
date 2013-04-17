@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="layout" content="main" />
+	<title>eBay</title>
+
+</head>
+<body>
+	<div>
+		<ul>
+            {#list}
+			    <li>{item}</li>
+            {/list}
+		</ul>
+	</div>
+
+</body>
+</html>

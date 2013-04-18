@@ -115,7 +115,7 @@ function printCpuMemory(){
     usage.lookup(process.pid,{ keepHistory: true }, function(err, result) {
         if(!err && result){
             if(result.memory){
-                result.memory = (result.memory / 1048576) + 'mb'; //104875 = 1024 * 1024, convert bytes to mb
+                result.memory = Math.round((result.memory / 1048576)) + 'mb'; //104875 = 1024 * 1024, convert bytes to mb
             }
             console.log(result);
         }

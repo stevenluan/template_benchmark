@@ -112,8 +112,13 @@ function fib(n) {
 setInterval(printCpuMemory, 3000);
 
 function printCpuMemory(){
-    usage.lookup(process.pid, function(err, result) {
-        if(!err) console.log(result);
+    usage.lookup(process.pid,{ keepHistory: true }, function(err, result) {
+        if(!err && result){
+            if(result.memory){
+                result.memory = (result.memory / 1048576) + 'mb'; //104875 = 1024 * 1024, convert bytes to mb
+            }
+            console.log(result);
+        }
     });
 }
 module.exports = app.listen(app.get('port'), function () {

@@ -117,6 +117,9 @@ function printCpuMemory(){
             if(result.memory){
                 result.memory = Math.round((result.memory / 1048576)) + 'mb'; //104875 = 1024 * 1024, convert bytes to mb
             }
+            if(result.cpu){
+                result.cpu = Math.round(result.cpu);
+            }
             console.log(result);
         }
     });

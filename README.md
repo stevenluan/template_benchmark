@@ -56,7 +56,7 @@ Concurrency Load | 95% response time of JSP(ms) | 95% response time of Node(ms)
 
 ```
 AB Command
-ab -r -n 20000 -c 1000 http://127.0.0.1:8081/SpringMVC/listview
+ab -k -r -n 20000 -c 1000 http://127.0.0.1:8081/SpringMVC/listview
 
-ab -r -n 20000 -c 1000 http://127.0.0.1:3000/listview
+ab -k -r -n 20000 -c 1000 http://127.0.0.1:3000/listview
 ```

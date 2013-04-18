@@ -12,7 +12,8 @@
         "dustjs-linkedin":"",
         "xml2js":"",
         "request":"",
-        "methods":""
+        "methods":"",
+        "usage":""
     },
     "devDependencies": {}
 }

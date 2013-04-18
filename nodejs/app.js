@@ -1,6 +1,8 @@
-var express = require('express'), http = require('http'), _ = require('underscore'), engines = require('consolidate'), path = require('path'), Search = require('./lib/search');
+var express = require('express'), http = require('http'), _ = require('underscore'), engines = require('consolidate'), path = require('path');
+var usage = require('usage');
 var methods = require('methods');
 var app = express();
+
 
 app.engine('dust', engines.dust);
 app.configure(function () {
@@ -27,7 +29,7 @@ app.get('/', function (req, res) {
     res.render('index', {
         "name": "Raptor " + new Date().getTime(),
         cache: true
-    })
+    });
 });
 
 var ulModel = getULModel();
@@ -41,7 +43,7 @@ function getULModel(){
     }
     ret.list = list;
     return ret;
-};
+}
 
 /**
  * render the 1000 ul element in the template   - measure the simple repeated templates
@@ -72,7 +74,7 @@ function getItemList(){
     }
     ret.list = list;
     return ret;
-};
+}
 
 /**
  * render a listing view of 100 items   - measure the render of complex html page.
@@ -88,7 +90,7 @@ app.get('/search', function (req, res) {
     var search = new Search();
     search.finditems(function (result) {
         res.send(result);
-    })
+    });
 });
 
 /**
@@ -107,7 +109,13 @@ function fib(n) {
     return fib(n - 1) + fib(n - 2);
 }
 
+setInterval(printCpuMemory, 3000);
 
+function printCpuMemory(){
+    usage.lookup(process.pid, function(err, result) {
+        if(!err) console.log(result);
+    });
+}
 module.exports = app.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
